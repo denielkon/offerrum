@@ -27,7 +27,7 @@ for (let anchor of anchors) {
   })
 }
 document.addEventListener('click', function (e) {
-	
+	console.log(e.target);
 	if (e.target === headerBurger) {
 		headerBurger.classList.toggle('header__burger-active');
 		headerMenu.classList.toggle('burger-menu-active');
@@ -51,6 +51,10 @@ document.addEventListener('click', function (e) {
 		header.classList.remove('lock');
 		headerBurger.classList.remove('header__burger-active');
 		body.classList.remove('lock');
+	}
+
+	if (e.target === input) {
+		input.focus()
 	}
 
 	if (e.target === submit
