@@ -1,16 +1,18 @@
 const header = document.querySelector('.header');
-const headerBurger = document.querySelector('.header__burger')
-const headerMenu = document.querySelector('.burger-menu')
-const anchors = document.querySelectorAll('a[href*="#"]')
+const headerBurger = document.querySelector('.header__burger');
+const headerMenu = document.querySelector('.burger-menu');
+const anchors = document.querySelectorAll('a[href*="#"]');
+const popUpWrapper = document.querySelector('.popup__wrapper');
+const submit = document.querySelector('.popup__submit');
 window.addEventListener("scroll", function (e) {
 	if (window.pageYOffset < 10) {
-		header.classList.remove("scrolled")
+		header.classList.remove("scrolled");
 	} else {
-		header.classList.add("scrolled")
+		header.classList.add("scrolled");
 	}
 });
 if (window.pageYOffset > 10) {
-	header.classList.add("scrolled")
+	header.classList.add("scrolled");
 }
 for (let anchor of anchors) {
    anchor.addEventListener('click', function (e) {
@@ -31,34 +33,35 @@ document.addEventListener('click', function (e) {
 		document.querySelector('body').classList.toggle('lock')
 	}
 	if (e.target === document.querySelector('.main__button')) {
-		document.querySelector('.popup__wrapper').classList.add('popup-active')
-		document.querySelector('body').classList.add('lock')
+		popUpWrapper.classList.add('popup-active');
+
 	}
 	if (e.target === document.querySelector('.popup__close-cross')) {
-		document.querySelector('.popup__wrapper').classList.remove('popup-active')
-		document.querySelector('body').classList.remove('lock')
+		popUpWrapper.classList.remove('popup-active');
+		
 	}
-	if (e.target === document.querySelector('.popup__wrapper')){
-		document.querySelector('.popup__wrapper').classList.remove('popup-active')
-		document.querySelector('body').classList.remove('lock')
+	if (e.target === popUpWrapper){
+		popUpWrapper.classList.remove('popup-active');
+		
 	}
 	if (e.target === document.querySelectorAll('.burger-menu__anchor')[0]
 	|| e.target === document.querySelectorAll('.burger-menu__anchor')[1]) {
-		headerMenu.classList.remove('burger-menu-active')
-		header.classList.remove('lock')
-		document.querySelector('body').classList.remove('lock')
+		headerMenu.classList.remove('burger-menu-active');
+		header.classList.remove('lock');
+		headerBurger.classList.remove('header__burger-active');
+		document.querySelector('body').classList.remove('lock');
 	}
 
-	if (e.target === document.querySelector('.popup__submit')
-		&& !document.querySelector('.popup__submit').classList.contains('popup__submit-disabled')) {
-		if(document.querySelector('.popup__submit').textContent !== 'Хорошо'){
-			document.querySelector('.popup__title').textContent = 'Отлично!'
-			document.querySelector('.popup__text').textContent = 'Вам на почту выслано письмо с подтверждением регистрации'
-			document.querySelector('.popup__mail-input').remove()
-			document.querySelector('.popup__submit').textContent = 'Хорошо'
+	if (e.target === submit
+		&& !submit.classList.contains('popup__submit-disabled')) {
+		if(submit.textContent !== 'Хорошо'){
+			document.querySelector('.popup__title').textContent = 'Отлично!';
+			document.querySelector('.popup__text').textContent = 'Вам на почту выслано письмо с подтверждением регистрации';
+			document.querySelector('.popup__mail-input').remove();
+			submit.textContent = 'Хорошо';
 		} else {
-			document.querySelector('.popup__wrapper').classList.remove('popup-active')
-			document.querySelector('body').classList.remove('lock')
+			popUpWrapper.classList.remove('popup-active')
+			document.querySelector('body').classList.remove('lock');
 		}
 	}
 
@@ -75,7 +78,7 @@ document.querySelector('.popup__mail-input').addEventListener('input', function 
 })
 document.addEventListener('keydown', function (e) { 
 	if(e.keyCode == 27){
-		document.querySelector('.popup__wrapper').classList.remove('popup-active');
+		popUpWrapper.classList.remove('popup-active');
 		document.querySelector('body').classList.remove('lock');
 	}
 })
