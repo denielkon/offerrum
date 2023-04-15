@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	const headerBurger = document.querySelector('.header__burger');
 	const headerMenu = document.querySelector('.burger-menu');
 	const anchors = document.querySelectorAll('a[href*="#"]');
-	const popUpWrapper = document.querySelector('.popup__wrapper');
+	const popUpWrapper = document.querySelector('.popup__layer');
 	const submit = document.querySelector('.popup__submit');
 	const body = document.querySelector('body');
 	const input = document.querySelector('.popup__mail-input');
